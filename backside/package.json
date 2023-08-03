@@ -1,0 +1,33 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000R\u0000E\u0000S\u0000T\u0000-\u0000A\u0000P\u0000I\u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhmedKhaleda998/REST-API.git"
+  },
+  "author": "Ahmed Khaled",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AhmedKhaleda998/REST-API/issues"
+  },
+  "homepage": "https://github.com/AhmedKhaleda998/REST-API#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.1",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

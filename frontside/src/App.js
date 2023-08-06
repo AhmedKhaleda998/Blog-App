@@ -116,8 +116,8 @@ class App extends Component {
       },
       body: JSON.stringify({
         email: authData.signupForm.email.value,
-        name: authData.signupForm.name.value,
-        password: authData.signupForm.password.value
+        password: authData.signupForm.password.value,
+        name: authData.signupForm.name.value
       })
     })
       .then(res => {

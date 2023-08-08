@@ -1,4 +1,5 @@
 const path = require('path');
+const http = require('http');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -43,7 +44,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
-})
+});
 
 app.use('/feed', feedRoutes);
 app.use('/auth', authRoutes);
@@ -60,8 +61,21 @@ app.use((error, req, res, next) => {
 
 mongoose
     .connect('mongodb+srv://ahmedkhaleda:abcd1234@cluster.1w2hiwu.mongodb.net/blog')
-    .then((result) => {
-        app.listen(PORT, console.log(`Listening on port ${PORT}`));
+    .then(result => {
+        const server = http.createServer(app);
+        const io = require('./socket').init(server, {
+            cors: {
+                origin: '*',
+                methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+                allowedHeaders: ['Content-Type', 'Authorization'],
+            }
+        });
+        io.on('connection', (socket) => {
+            console.log('A user connected');
+        });
+        server.listen(PORT, () => {
+            console.log(`Server is listening on port`, PORT);
+        });
     }).catch((err) => {
         console.log(err);
     });

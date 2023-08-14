@@ -207,6 +207,7 @@ class Feed extends Component {
             editLoading: false
           };
         });
+        this.loadPosts();
       })
       .catch(err => {
         console.log(err);
@@ -237,7 +238,7 @@ class Feed extends Component {
         }
         return res.json();
       })
-      .then(resData => {
+      .then(resData => {  
         console.log(resData);
         this.loadPosts();
         // this.setState(prevState => {
